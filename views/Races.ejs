@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('./partials/nav.ejs') %> <% if(races.length > 0) { %> <%
+    races.forEach(race => { %>
+        <a href="/races/<%= race._id %>">
+        <p><%= race.raceName %></p>
+    <% })} else {%>
+    <p>No races in the Inventory</p>
+    <% } %>
+  </body>
+</html>
