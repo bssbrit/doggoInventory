@@ -12,6 +12,23 @@ router.get("/", function (req, res, next) {
     });
 });
 
+router.post("/", (req, res) => {
+  const data = req.body;
+  const newRace = new Race({
+    raceName: data.raceName,
+    Syze: data.syze,
+  });
+  newRace
+    .save()
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  res.redirect("/races");
+});
+
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   Race.findById(id)
@@ -22,4 +39,5 @@ router.get("/:id", (req, res) => {
       console.log(err);
     });
 });
+
 module.exports = router;

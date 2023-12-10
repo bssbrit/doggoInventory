@@ -5,12 +5,25 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <%- include('./partials/nav.ejs') %> <% if(races.length > 0) { %> <%
+    <%- include('./partials/nav.ejs') %>
+    <form method="POST" action="/races">
+      <label for="raceName">Race Name:</label>
+      <input type="text" id="raceName" name="raceName" required />
+      <select name="syze" id="syze">
+        <option value="large">Large</option>
+        <option value="medium">Medium</option>
+        <option value="small">Small</option>
+      </select>
+      <button type="submit">Create new Race</button>
+    </form>
+    <div>
+     <% if(races.length > 0) { %> <%
     races.forEach(race => { %>
         <a href="/races/<%= race._id %>">
         <p><%= race.raceName %></p>
     <% })} else {%>
     <p>No races in the Inventory</p>
     <% } %>
+  </div>
   </body>
 </html>

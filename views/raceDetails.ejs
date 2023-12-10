@@ -9,7 +9,20 @@
     <div>
       <h1>Race Name: <%= race.raceName %></h1>
       <p>Size: <%= race.Syze %></p>
+      <%= race._id %>
       <p>List of Doggos</p>
+      <form method="POST" action="/doggos">
+        <label for="doggoName">Doggo Name:</label>
+        <input type="text" id="doggoName" name="doggoName" required />
+        <!--
+          Fazer sipa um forEach do array de raças dando uma opção com o valor do id de cada raça
+          <select name="syze" id="syze">
+          <option value="large">Large</option>
+          <option value="medium">Medium</option>
+          <option value="small">Small</option>
+        </select> -->
+        <button type="submit">Create new Race</button>
+      </form>
     </div>
   </body>
 </html>
