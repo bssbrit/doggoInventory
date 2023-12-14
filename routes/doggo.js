@@ -15,16 +15,26 @@ router.post("/newDoggo", (req, res) => {
     .save()
     .then((result) => {
       console.log("Aqui 1");
-      console.log(result);
-      Race.findById(data.raceId).then((res) => {
+      console.log(result._id);
+      Race.findById(data.raceId).then((foundRace) => {
         console.log("Aqui 2");
-        console.log(res);
+        console.log(foundRace);
+
+        const updatedRace = new Race(foundRace);
+        updatedRace.doggos.push(result._id);
+        updatedRace
+          .save()
+          .then(() => {
+            console.log("Sucesso");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
     })
     .catch((error) => {
       console.log(error);
     });
-
   res.redirect(`/races/${data.raceId}`);
 });
 

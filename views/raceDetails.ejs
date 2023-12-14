@@ -35,6 +35,17 @@
 
         <button type="submit">NEW DOGGO YAAAAAAAAAAAAY</button>
       </form>
+      <div>
+        <% if(race.doggos.length > 0 ) {%>
+          <% race.doggos.forEach(doggo => { %>
+          <p>
+          <%= doggo  %>
+          </p>
+          <% }) %>
+          <% } else{%>
+           <p>Num tem :(</p>
+            <% } %>
+      </div>
     </div>
   </body>
 </html>
